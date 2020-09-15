@@ -144,6 +144,8 @@ Use graphical analysis to determine the optimal solution(s) for ($x_1 \geq x_2$)
 # ╔═╡ 6bea5f10-ef77-11ea-1181-1356c9b3b4e7
 md"""
 !!! hint "Solution 👀"
+    ![sol3113](https://raw.githubusercontent.com/jmontalvo94/42002_TA/master/img/sol3113.PNG)
+    
     When the constraints are given, the optimal solution depends on the slope of the objective function - given by the ratio $-c_1/c_2$. Explore the different possible values of $-c_1/c_2$. The important slopes are those of the constraint boundaries.
 """
 
@@ -225,13 +227,10 @@ x_1 \geq 0&,\ x_2 \geq 0 \\
 md"""
 !!! hint "Solution 👀"
     **a)-d)**
-    ![solution]($string(pwd(),"/sol412.PNG"))
+    ![sol412](https://raw.githubusercontent.com/jmontalvo94/42002_TA/master/img/sol412.PNG)
 
     **e)** Since the origin belongs to the feasible region, the Simplex method starts from (0; 0). The optimality test for (0; 0) fails, therefore it moves along the x1 axis (highest profit increase), stopping at the first constraint boundary to find CPF solution (3; 0). This solution is not optimal since there is a positive rate of improvement of $Z$ along the boundary of constraint $2x_1 +x_2 \leq 6$. The new solution identified is (2; 2), with $Z = 10$. There are no positive rate of improvement going along any of the boundaries, therefore the Simplex method concludes that (2; 2) is optimal.
 """
-
-# ╔═╡ fe1f7df8-f6e7-11ea-2ee2-6744c121f355
-string(pwd(),"/sol412.PNG")
 
 # ╔═╡ 89720990-eea8-11ea-340d-d1985d34a3fd
 md"
@@ -262,7 +261,17 @@ x_1 \geq 0,&\ x_2 \geq 0
 # ╔═╡ 4e835f40-f133-11ea-2ddf-7310c63a4619
 md"""
 !!! hint "Solution 👀"
-    testing 🤷‍♂️
+    ```math
+    \begin{aligned}
+    \text{Max} \quad -Z &= -2x_1 - x_2\\
+    \text{s.t.} \quad x_2 &\leq 10\\
+    -2x_1 - 5x_2 &\leq -60\\
+    x_1 + x_2 &\leq 18\\
+    -x_1 - x_2 &\leq -18\\
+    3x_1+x_2 &\leq 44\\
+    x_1 \geq 0&, x_2 \geq 0
+    \end{aligned}
+    ```
 """
 
 # ╔═╡ 9a8d9d72-eea8-11ea-3e95-4dc0194f9bdc
@@ -289,7 +298,17 @@ x_1 \geq 0,&\ x_2 \in \mathbb{R}
 # ╔═╡ 5139f3c0-f133-11ea-03c8-193978895b71
 md"""
 !!! hint "Solution 👀"
-    testing 🤷‍♂️
+    ```math
+    \begin{aligned}
+    \text{Max} \quad Z = 2x_1&+(y_1-y_2)\\
+    \text{s.t.} \quad (y_1-y_2) &\leq 10\\
+    -2x_1-5(y_1-y_2) &\leq -60\\
+    x_1+(y_1-y_2) &\leq 18\\
+    -x_1-(y_1-y_2) &\leq -18\\
+    3x_1+(y_1-y_2) &\leq 44\\
+    x_1 \geq 0,\ y_1 \geq 0,\ &y_2 \geq 0
+    \end{aligned}
+    ```
 """
 
 # ╔═╡ 3d39acb0-ef55-11ea-0574-fb3fe10b0565
@@ -300,7 +319,7 @@ md"
 # ╔═╡ 24606590-ef54-11ea-22ae-939492342184
 md"""
 Case:
-$(@bind case Select(["3.1 - 4", "3.1 - 9", "3.1 - 13", "3.2 - 6", "4.1 - 2", "Optional a", "Optional b"]))
+$(@bind case Select(["3.1 - 4", "3.1 - 9", "3.1 - 13", "3.2 - 6", "4.1 - 2"]))
 """
 
 # ╔═╡ 9234cc82-ef74-11ea-3d32-2bb0fa2e13fb
@@ -332,6 +351,11 @@ elseif case=="3.2 - 6"
 	Objective: $(@bind obj CheckBox())
 	"""
 elseif case=="4.1 - 2"
+	md"""
+	Constraint 1: $(@bind c1 CheckBox())
+	Constraint 2: $(@bind c2 CheckBox())
+	Objective: $(@bind obj CheckBox())
+	"""
 end
 
 # ╔═╡ d30dca00-f487-11ea-33eb-29cde060f8dd
@@ -348,6 +372,49 @@ elseif case == "3.2 - 6" && obj
 	``Z = x_1 + x_2`` $(@bind obj2 CheckBox())
 	"""
 end
+
+# ╔═╡ b2dd82b0-f46f-11ea-079b-376595f80407
+md"
+_Note that the feasible regions for_ $x_1 \geq 0$ _and_ $x_2 \geq 0$ _are not shown/colored._
+"
+
+# ╔═╡ b63864f0-ef76-11ea-0ba7-f331f3f5d767
+md"
+## Notes:
+"
+
+# ╔═╡ 3984ecc0-edce-11ea-3419-339fdc003a2d
+md"
+[^1]: See [The Unsolvable Math Problem](https://www.snopes.com/fact-check/the-unsolvable-math-problem/)
+"
+
+# ╔═╡ a360fdf0-edce-11ea-2f42-07bd9073048a
+author = (name = "Jorge Montalvo Arvizu", id = "s192184")
+
+# ╔═╡ 3ae326e0-f134-11ea-29c2-fd299efce8da
+md"
+_42002 - Modelling and analysis of Sustainable Energy Systems using Operations Research_
+
+Prepared by: **_$(author.name)_** ($(author.id)@student.dtu.dk)
+"
+
+# ╔═╡ d45491c0-ef6c-11ea-1218-7b672f302a13
+begin
+	lims = Dict(
+		"3.1 - 4" => [(0, 30), (0, 45), (0, 31)],
+		"3.1 - 9" => [(0, 4000), (0, 6000), (700, 760)],
+		"3.1 - 13" => [(0, 12), (0, 12), (-25, 26)],
+		"3.2 - 6" => [(0, 10), (0, 60), (0, 20)],
+		"4.1 - 2" => [(0, 10), (0, 10), (0, 10)]
+	)
+	xlims, ylims, zlims = lims[case][1], lims[case][2], lims[case][3]
+	nothing
+end
+
+# ╔═╡ c4e6572e-ef55-11ea-0754-d9a192eee611
+md"""
+Z = $(@bind Z Slider(zlims[1]:zlims[2], default=div(zlims[2]-zlims[1],2)+zlims[1],show_value=true))
+"""
 
 # ╔═╡ 373b8730-f12a-11ea-362a-c74556fe7e3f
 begin
@@ -417,21 +484,16 @@ begin
 		if obj && obj2
 		plot!([0,Z],[Z,0],label=L"$Z=x_1+x_2$", color=:red, linestyle=:dash, linewidth=1)
 		end
-		
-	end
 	
 	elseif case == "4.1 - 2"
 		if c1
-		plot!([0, 10],[10, 40/3], fillrange=0, fillalpha=0.1,label=L"$-x_1 + 3x_2 \leq 30$")
+		plot!([0, 3],[6, 0], fillrange=0, fillalpha=0.1,label=L"$2x_1+x_2 \leq 6$")
 		end
 		if c2
-		plot!([0, 10],[30, 60], fillrange=0, fillalpha=0.1, label=L"$-3x_1 + x_2 \leq 30$")
+		plot!([0, 6],[3, 0], fillrange=0, fillalpha=0.1, label=L"$x_1+2x_2 \leq 6$")
 		end
-		if obj && obj1
-		plot!([0,10],[Z,Z+10],label=L"$Z=-x_1+x_2$", color=:red, linestyle=:dash, linewidth=1)
-		end
-		if obj && obj2
-		plot!([0,Z],[Z,0],label=L"$Z=x_1+x_2$", color=:red, linestyle=:dash, linewidth=1)
+		if obj
+		plot!([0,Z/3],[Z/2,0],label=L"$Z=3x_1+2x_2$", color=:red, linestyle=:dash, linewidth=1)
 		end
 		
 	end
@@ -441,51 +503,6 @@ begin
 	xlabel!(L"$x_1$")
 	ylabel!(L"$x_2$")
 end
-
-# ╔═╡ b2dd82b0-f46f-11ea-079b-376595f80407
-md"
-_Note that the feasible regions for_ $x_1 \geq 0$ _and_ $x_2 \geq 0$ _are not shown/colored._
-"
-
-# ╔═╡ b63864f0-ef76-11ea-0ba7-f331f3f5d767
-md"
-## Notes:
-"
-
-# ╔═╡ 3984ecc0-edce-11ea-3419-339fdc003a2d
-md"
-[^1]: See [The Unsolvable Math Problem](https://www.snopes.com/fact-check/the-unsolvable-math-problem/)
-"
-
-# ╔═╡ a360fdf0-edce-11ea-2f42-07bd9073048a
-author = (name = "Jorge Montalvo Arvizu", id = "s192184")
-
-# ╔═╡ 3ae326e0-f134-11ea-29c2-fd299efce8da
-md"
-_42002 - Modelling and analysis of Sustainable Energy Systems using Operations Research_
-
-Prepared by: **_$(author.name)_** ($(author.id)@student.dtu.dk)
-"
-
-# ╔═╡ d45491c0-ef6c-11ea-1218-7b672f302a13
-begin
-	lims = Dict(
-		"3.1 - 4" => [(0, 30), (0, 45), (0, 70)],
-		"3.1 - 9" => [(0, 4000), (0, 6000), (700, 800)],
-		"3.1 - 13" => [(0, 12), (0, 12), (-25, 26)],
-		"3.2 - 6" => [(0, 10), (0, 60), (-25, 26)],
-		"4.1 - 2" => [(),()],
-		"Optional a" => [(),()],
-		"Optional b" => [(),()],
-	)
-	xlims, ylims, zlims = lims[case][1], lims[case][2], lims[case][3]
-	nothing
-end
-
-# ╔═╡ c4e6572e-ef55-11ea-0754-d9a192eee611
-md"""
-Z = $(@bind Z Slider(zlims[1]:zlims[2], default=div(zlims[2]-zlims[1],2)+zlims[1],show_value=true))
-"""
 
 # ╔═╡ Cell order:
 # ╟─3ae326e0-f134-11ea-29c2-fd299efce8da
@@ -501,8 +518,7 @@ Z = $(@bind Z Slider(zlims[1]:zlims[2], default=div(zlims[2]-zlims[1],2)+zlims[1
 # ╟─2b4bcf90-eea3-11ea-0a5b-c5507c28ed4e
 # ╟─6ef52e10-ef77-11ea-0e6c-356bdd085208
 # ╟─f7931ed0-eea5-11ea-038b-75467446c7a9
-# ╠═727b6e9e-ef77-11ea-2b63-21b8b91abd31
-# ╠═fe1f7df8-f6e7-11ea-2ee2-6744c121f355
+# ╟─727b6e9e-ef77-11ea-2b63-21b8b91abd31
 # ╟─89720990-eea8-11ea-340d-d1985d34a3fd
 # ╟─8f5b6770-eea8-11ea-266b-57c094e40a77
 # ╟─4e835f40-f133-11ea-2ddf-7310c63a4619
@@ -513,10 +529,10 @@ Z = $(@bind Z Slider(zlims[1]:zlims[2], default=div(zlims[2]-zlims[1],2)+zlims[1
 # ╟─c4e6572e-ef55-11ea-0754-d9a192eee611
 # ╟─9234cc82-ef74-11ea-3d32-2bb0fa2e13fb
 # ╟─d30dca00-f487-11ea-33eb-29cde060f8dd
-# ╠═373b8730-f12a-11ea-362a-c74556fe7e3f
+# ╟─373b8730-f12a-11ea-362a-c74556fe7e3f
 # ╟─b2dd82b0-f46f-11ea-079b-376595f80407
 # ╟─b63864f0-ef76-11ea-0ba7-f331f3f5d767
 # ╟─3984ecc0-edce-11ea-3419-339fdc003a2d
 # ╟─a360fdf0-edce-11ea-2f42-07bd9073048a
-# ╠═e96ee5ce-ef51-11ea-18f7-5fffcbe97c21
-# ╠═d45491c0-ef6c-11ea-1218-7b672f302a13
+# ╟─e96ee5ce-ef51-11ea-18f7-5fffcbe97c21
+# ╟─d45491c0-ef6c-11ea-1218-7b672f302a13
